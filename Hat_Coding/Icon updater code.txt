@@ -1,0 +1,7 @@
+import win32com.client
+
+def update_shortcut(shortcut_path, new_icon):
+    shell = win32com.client.Dispatch("WScript.Shell")
+    sc = shell.CreateShortcut(shortcut_path)
+    sc.IconLocation = new_icon
+    sc.Save()

@@ -1,0 +1,21 @@
+import os
+import win32com.client
+
+# Example: pick one shortcut from desktop
+desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+shortcut_path = os.path.join(desktop_path, "TestApp.lnk")  # <-- change name
+
+# Create a shell object
+shell = win32com.client.Dispatch("WScript.Shell")
+
+# Load the shortcut
+shortcut = shell.CreateShortcut(shortcut_path)
+
+# Change its icon (needs a .ico file)
+shortcut.IconLocation = r"C:\Users\Public\Pictures\hat.ico"  # <-- replace with your test icon
+shortcut.save()
+
+print("✅ Shortcut icon changed!")
+
+App icon testing
+Discord.lnk

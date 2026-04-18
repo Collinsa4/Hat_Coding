@@ -1,0 +1,19 @@
+import win32api, win32con, win32gui
+
+def extract_icon(exe_path, save_as):
+    large, small = win32gui.ExtractIconEx(exe_path, 0)
+    if large:
+        hicon = large[0]
+    elif small:
+        hicon = small[0]
+    else:
+        return False
+
+    # Save icon to file
+    hdc = win32ui.CreateDCFromHandle(win32gui.GetDC(0))
+    hbmp = win32ui.CreateBitmap()
+    hbmp.CreateCompatibleBitmap(hdc, 256, 256)
+    hdc.SelectObject(hbmp)
+    win32gui.DrawIconEx(hdc.GetHandleOutput(), 0, 0, hicon, 256, 256, 0, None, win32con.DI_NORMAL)
+    hbmp.SaveBitmapFile(hdc, save_as)
+    return True

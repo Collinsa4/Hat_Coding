@@ -1,0 +1,5 @@
+import os
+desktop_path=os.path.join(os.path.expanduser("~"), "Desktop_path")
+print("Looking for desktop at:", desktop_path)
+
+print ("does it exist?", os.path.exists(dekstop_path))

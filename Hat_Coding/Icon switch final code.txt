@@ -1,0 +1,9 @@
+import os
+import win32com.client
+desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+shortcut_path = os.path.join(desktop_path, "TestApp.lnk")
+shell = win32com.client.Dispatch("WScript.Shell")
+shortcut = shell.CreateShortcut(shortcut_path)
+shortcut.IconLocation = r"C:\Users\Public\Pictures\hat.ico"  
+shortcut.save()
+print("✅ Shortcut icon changed!")
